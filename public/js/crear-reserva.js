@@ -23,6 +23,7 @@ formCrearReserva.addEventListener('submit', async (e) => {
         email
     }
 
+
     const response = await fetch('http://localhost:4000/api', {
         method: 'POST',
         body: JSON.stringify(reserva),
@@ -35,5 +36,7 @@ formCrearReserva.addEventListener('submit', async (e) => {
 
     alert(data.message)
     window.location.href = "/"
+
+
 
 });

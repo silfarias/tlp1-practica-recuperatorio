@@ -30,16 +30,21 @@ router.get('/actualizar-reserva/:id', renderFormEditarReserva);
 // ==========================================
 
 // Obtener todas las reservas
-router.get('/api/', obtenerReservas);
- 
+router.get('/api',obtenerReservas);
+
+//Obtener una reserva
+router.get('/api/:id', obtenerReserva);
+
 // Crear una reserva
-router.post('/api/', crearReserva);
- 
+router.post('/api', crearReserva);
+
 // Actualizar una reserva
 router.put('/api/:id', actualizarReserva);
- 
+
 // Eliminar una reserva de forma lógica
 router.delete('/api/:id', eliminarReserva);
 
- 
- module.exports = router;
+// Formulario para actualizar una reserva
+router.get('/actualizar-reserva/:id', renderFormEditarReserva) 
+
+module.exports = router
