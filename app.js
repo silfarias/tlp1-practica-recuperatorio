@@ -7,6 +7,10 @@ const path = require('path');
 require('dotenv').config();
 require('ejs');
 
+//Conexión a la base de datos
+const { conectarDB } = require('./database');
+conectarDB()
+
 const app = express();
 const port = process.env.PORT || 3000
 
@@ -16,18 +20,16 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('view engine', 'ejs');
-
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use(require('./routes/reserva.routes'));
+//app.use(require('./routes/reserva.routes'));
 
 // TODO: Si la petición no coincide con ninguna de las rutas declaradas, mostrar error 404
 app.use((req, res, next) => {
     return res.status(404).render('404')
 })
-
 
 // Starting the server
 app.listen(port, () => console.log(`Server on http://localhost:${port}`));
